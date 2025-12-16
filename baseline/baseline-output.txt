@@ -1,0 +1,111 @@
+Running in DEBUG mode (fewer subjects, quick training)
+
+============================================================
+DROWSINESS DETECTION - BASELINE MODEL (Landmarks Only)
+============================================================
+Debug Mode:     True
+Subjects:       [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+Test Subject:   11
+Epochs:         8
+Batch Size:     8
+Learning Rate:  0.001
+Hidden Size:    128
+Window Size:    30
+Sample Rate:    1/60 frames
+============================================================
+
+[Step 1] Loading and preprocessing data...
+
+==================================================
+Data Split (Leave-One-Subject-Out)
+==================================================
+Train subjects: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Test subject: 11
+Train tests: 27, Test tests: 3
+
+--- Loading Training Data ---
+Loading data for 27 tests...
+  Loaded 1-1: 27 windows, KSS=3, label=0
+  Loaded 1-2: 13 windows, KSS=6, label=1
+  Loaded 1-3: 12 windows, KSS=7, label=1
+  Loaded 2-1: 27 windows, KSS=3, label=0
+  Loaded 2-2: 13 windows, KSS=7, label=1
+  Loaded 2-3: 11 windows, KSS=6, label=1
+  Loaded 3-1: 27 windows, KSS=2, label=0
+  Loaded 3-2: 12 windows, KSS=3, label=0
+  Loaded 3-3: 12 windows, KSS=4, label=0
+  Loaded 4-1: 27 windows, KSS=4, label=0
+  Loaded 4-2: 12 windows, KSS=8, label=1
+  Loaded 4-3: 12 windows, KSS=9, label=1
+  Loaded 5-1: 27 windows, KSS=3, label=0
+  Loaded 5-2: 11 windows, KSS=7, label=1
+  Loaded 5-3: 11 windows, KSS=8, label=1
+  Loaded 6-1: 27 windows, KSS=2, label=0
+  Loaded 6-2: 12 windows, KSS=3, label=0
+  Loaded 6-3: 13 windows, KSS=7, label=1
+  Loaded 7-2: 11 windows, KSS=4, label=0
+  Loaded 7-3: 12 windows, KSS=9, label=1
+  Loaded 8-1: 27 windows, KSS=2, label=0
+  Loaded 8-2: 12 windows, KSS=6, label=1
+  Loaded 8-3: 13 windows, KSS=8, label=1
+  Loaded 9-2: 27 windows, KSS=6, label=1
+  Loaded 9-3: 27 windows, KSS=8, label=1
+  Loaded 10-1: 27 windows, KSS=3, label=0
+  Loaded 10-3: 27 windows, KSS=7, label=1
+Total samples: 489
+Class distribution: Alert=263, Drowsy=226
+
+--- Loading Test Data ---
+Loading data for 3 tests...
+  Loaded 11-1: 27 windows, KSS=4, label=0
+  Loaded 11-2: 27 windows, KSS=7, label=1
+  Loaded 11-3: 27 windows, KSS=7, label=1
+Total samples: 81
+Class distribution: Alert=27, Drowsy=54
+
+[Step 2] Training model...
+Using CPU
+
+Model: LandmarkLSTM
+Trainable parameters: 144,578
+
+============================================================
+Training for 8 epochs
+============================================================
+Epoch   1/8 | Train Loss: 0.6207 | Train Acc: 0.6414 | Test Acc: 0.3210 | Test F1: 0.4860 | Time: 0.5s
+Epoch   2/8 | Train Loss: 0.4952 | Train Acc: 0.7418 | Test Acc: 0.3210 | Test F1: 0.4860 | Time: 0.4s
+Epoch   3/8 | Train Loss: 0.4491 | Train Acc: 0.7869 | Test Acc: 0.3827 | Test F1: 0.5536 | Time: 0.4s
+Epoch   4/8 | Train Loss: 0.3866 | Train Acc: 0.8238 | Test Acc: 0.2963 | Test F1: 0.4571 | Time: 0.4s
+Epoch   5/8 | Train Loss: 0.3149 | Train Acc: 0.8586 | Test Acc: 0.3333 | Test F1: 0.5000 | Time: 0.4s
+Epoch   6/8 | Train Loss: 0.2579 | Train Acc: 0.8893 | Test Acc: 0.3210 | Test F1: 0.4860 | Time: 0.4s
+Epoch   7/8 | Train Loss: 0.2091 | Train Acc: 0.9078 | Test Acc: 0.3333 | Test F1: 0.5000 | Time: 0.4s
+Epoch   8/8 | Train Loss: 0.2683 | Train Acc: 0.8873 | Test Acc: 0.3333 | Test F1: 0.5000 | Time: 0.4s
+
+Training completed in 3.3s
+
+============================================================
+Final Evaluation (Best Model)
+============================================================
+Accuracy:  0.3333
+Precision: 0.5000
+Recall:    0.5000
+F1-Score:  0.5000
+
+Confusion Matrix:
+              Predicted
+              Alert  Drowsy
+Actual Alert      0     27
+       Drowsy    27     27
+
+==================================================
+EVALUATION METRICS SUMMARY
+==================================================
+Accuracy:  33.33%
+Precision: 50.00%
+Recall:    50.00%
+F1-Score:  50.00%
+==================================================
+
+============================================================
+BASELINE TRAINING COMPLETE
+============================================================
